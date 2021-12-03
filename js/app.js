@@ -1,3 +1,6 @@
+const lien_api_actualite = "http://127.0.0.1:5000/actualites";
+const lien_api_formation = "http://127.0.0.1:5000/formations";
+
 const Sidebar = {
     template: ` <div class="sidebar">
                     <div class="logo-details">
@@ -113,7 +116,7 @@ const AddActualite = {
 
         },
         ActuStore() {
-            axios.post('http://127.0.0.1:5000/actualites', null, {
+            axios.post(lien_api_actualite, null, {
                 params: {
                     namepost: this.namepost,
                     uriimg: this.uriimg,
@@ -227,7 +230,7 @@ const Actualite = {
         }
     },
     created() {
-        axios.get('http://127.0.0.1:5000/actualites')
+        axios.get(lien_api_actualite)
             .then(response => this.donnees(response.data))
             .catch(error => console.log(error));
     },
@@ -263,7 +266,7 @@ const Actualite = {
 
         },
         UpdateActu() {
-            axios.put('http://127.0.0.1:5000/actualites', {
+            axios.put(lien_api_actualite, {
                     namepost: this.namepost,
                     uriimg: this.uriimg,
                     descriptionpost: this.descriptionpost
@@ -307,7 +310,7 @@ const Actualite = {
         delete(id, message) {
             console.log(message);
 
-            axios.delete('http://127.0.0.1:5000/actualites', { data: { namepost: id } })
+            axios.delete(lien_api_actualite, { data: { namepost: id } })
                 .then(response => this.actualites = response.data)
                 .catch(error => console.log(error));
         }
@@ -384,7 +387,7 @@ const AddFormation = {
 
         },
         ActuStore() {
-            axios.post('http://127.0.0.1:5000/formations', null, {
+            axios.post(lien_api_formation, null, {
                 params: {
                     nameformation: this.nameformation,
                     uriimg: this.uriimg,
@@ -497,7 +500,7 @@ const Formation = {
         }
     },
     created() {
-        axios.get('http://127.0.0.1:5000/formations')
+        axios.get(lien_api_formation)
             .then(response => this.donnees(response.data))
             .catch(error => console.log(error));
     },
@@ -533,7 +536,7 @@ const Formation = {
 
         },
         UpdateActu() {
-            axios.put('http://127.0.0.1:5000/formations', {
+            axios.put(lien_api_formation, {
                     nameformation: this.nameformation,
                     uriimg: this.uriimg,
                     descriptionformation: this.descriptionformation
@@ -576,7 +579,7 @@ const Formation = {
         },
         delete(id, message) {
             console.log(message);
-            axios.delete('http://127.0.0.1:5000/formations', { data: { nameformation: id } })
+            axios.delete(lien_api_formation, { data: { nameformation: id } })
                 .then(response => this.formations = response.data)
                 .catch(error => console.log(error));
         }
