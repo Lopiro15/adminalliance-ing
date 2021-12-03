@@ -16,8 +16,8 @@ if ($request_method == 'GET') {
     $sql = "delete from login WHERE Id_admin=?";
     $tab = array($id);
     traiterupdate($sql, $tab);
-    $sql = "select * from login order by Nom_comp;";
-    $tab = array();
+    $sql = "select * from login where email != ? order by Nom_comp;";
+    $tab = array($login);
     $resultat = traiterselect($sql, $tab);
     $output = array(
         'data' => $resultat,

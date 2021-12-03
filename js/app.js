@@ -675,7 +675,7 @@ const AddAdministrateur = {
             nom: '',
             contact: '',
             email: '',
-            typeAdmin: 0,
+            typeAdmin: 1,
             show: false,
         }
     },
